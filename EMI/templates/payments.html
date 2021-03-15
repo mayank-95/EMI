@@ -1,0 +1,20 @@
+{% if payments_list %}
+<style>
+    table,th,td{
+    border: 2px solid black;
+    }
+    table{
+    border-collapse:collapse;}
+</style>
+<h1>Payments:</h1>
+    <table id="displaytable">
+
+        <tr><th>Payment Id</th><th>Amount</th><th>Transaction date</th><th>Accounting Period</th><th>Account Number</th><tr>
+    {% for payment in payments_list %}
+
+        <tr><td>{{payment.id}}</td><td>{{ payment.amount }}</td><td>{{payment.transaction_date}}</td><td>{{payment.accounting_period}}</td><td><a href="/EMI/{{payment.id}}/collections/">{{payment.account_id}}</a></td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No accounts are available.</p>
+{% endif %}

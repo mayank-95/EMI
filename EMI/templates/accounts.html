@@ -1,0 +1,19 @@
+{% if accounts_list %}
+<style>
+    table,th,td{
+    border: 2px solid black;
+    }
+    table{
+    border-collapse:collapse;}
+</style>
+<h1>Accounts:</h1>
+    <table id="displaytable">
+         <tr><th>Loan Account number</th><th>Applicant Name</th><th>Bank Name</th><th>Bank Account Number</th><tr>
+    {% for account in accounts_list %}
+
+        <tr><td><a href="/EMI/{{account.id}}/collections/">{{account.id}}</a></td><td>{{ account.name }}</td><td>{{account.bank_name}}</td><td>{{account.bank_account_number}}</td></tr>
+    {% endfor %}
+    </table>
+{% else %}
+    <p>No accounts are available.</p>
+{% endif %}
